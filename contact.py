@@ -14,3 +14,9 @@ class Contact:
         self.first_name= first_name
         self.last_name= last_name
         self.email= email
+    
+    def save_contact(self):
+        '''
+            This method saves new contacts into the contact list
+        '''
+        Contact.contact_list.append(self)

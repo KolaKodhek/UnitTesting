@@ -33,6 +33,14 @@ class TestContact(unittest.TestCase):
         self.assertEqual(self.new_contact.first_name,"Felix")
         self.assertEqual(self.new_contact.last_name,"George")
         self.assertEqual(self.new_contact.email,"Mailme@gmail.com")
+    
+    def test_sava_contact(self):
+        '''
+            Since our first test to create a new 
+            contact passed, we proceed to test if we can save the contact
+        '''
         
+        self.new_contact.save_contact()#Save's the contact
+        self.assertEqual(len(Contact.contact_list),1)
 if __name__=='__main__':
     unittest.main()
