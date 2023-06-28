@@ -20,3 +20,9 @@ class Contact:
             This method saves new contacts into the contact list
         '''
         Contact.contact_list.append(self)
+        
+    def delete_contact(self):
+        '''
+            A method that deletes a contact from the list
+        '''
+        Contact.contact_list.remove(self)
