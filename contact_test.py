@@ -73,5 +73,18 @@ class TestContact(unittest.TestCase):
         
         self.new_contact.delete_contact()#deletes the contact
         self.assertEqual(len(Contact.contact_list),1)
+        
+    def test_find_contact(self):
+        '''
+            Test to find if we can find a contact
+        '''
+        self.new_contact.save_contact()
+        test_contact= Contact("Test", "User", "testuser@gmail.com")
+        test_contact.save_contact()
+        
+        found_contact = Contact.find_by_first_name("Test")
+        
+        self.assertEqual(found_contact.email,test_contact.email)
+        
 if __name__=='__main__':
     unittest.main()

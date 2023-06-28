@@ -26,3 +26,11 @@ class Contact:
             A method that deletes a contact from the list
         '''
         Contact.contact_list.remove(self)
+    @classmethod
+    def find_by_first_name(cls, name):
+        '''
+            Method to take in the name and return the contact that maches that name
+        '''
+        for contact  in cls.contact_list:
+            if contact.first_name== name:
+                return contact
