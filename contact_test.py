@@ -25,7 +25,18 @@ class TestContact(unittest.TestCase):
             Set up to run before each  test case.
         '''
         self.new_contact = Contact("Felix","George","Mailme@gmail.com")
+    
+    
+    def tearDown(self) -> None:
+        '''
+            This method cleans the list after eery test is run.
+            We added this method after our third test faild 
+            since we already had 3 items in the list instead of 2.
+            So to pass we had to clear the list after evey test.
+        '''
+        Contact.contact_list = [] 
         
+           
     def test_init(self):
         '''
             test_unit test case to test if the object is initialized properly
@@ -42,5 +53,14 @@ class TestContact(unittest.TestCase):
         
         self.new_contact.save_contact()#Save's the contact
         self.assertEqual(len(Contact.contact_list),1)
+        
+    def test_save_multiple_contacts(self):
+        '''
+            We test if we can save multiple contacts in our contact list
+        '''
+        self.new_contact.save_contact()
+        test_contact= Contact("Test", "User", "testuser@gmail.com")
+        test_contact.save_contact()
+        self.assertEqual(len(Contact.contact_list),2)
 if __name__=='__main__':
     unittest.main()
